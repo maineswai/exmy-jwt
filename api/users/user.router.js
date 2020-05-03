@@ -8,8 +8,9 @@ const {
   deleteUser,
   login
 } = require("./user.controller");
+const { addUserValidation } = require("../../validation/users/user.validation");
 
-router.post("/", checkToken, createUser);
+router.post("/", checkToken, addUserValidation, createUser);
 router.get("/", checkToken, getUsers);
 router.get("/:id", checkToken, getUsersByUserId);
 router.patch("/", checkToken, updateUsers);
